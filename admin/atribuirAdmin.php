@@ -6,6 +6,10 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
 else {
     header("Location: ../login.php");
 }
+//SET SQL_SAFE_UPDATES = 0;
+//UPDATE usuario SET tipo_usuario_id=2 WHERE email='gabru@email.com';
+//select * from usuario;
+//SET SQL_SAFE_UPDATES = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
