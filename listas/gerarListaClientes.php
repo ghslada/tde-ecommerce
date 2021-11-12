@@ -13,7 +13,8 @@ function gerarListaClientes(){
             }else{
                 $res['tipo_usuario_id']="ERRO.";
             }
-            echo("<tr>
+            echo("  
+                <tr>
                     <td>{$res['cpf']}</td>
                     <td>{$res['nome']}</td>
                     <td>{$res['email']}</td>

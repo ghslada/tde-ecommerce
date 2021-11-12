@@ -21,6 +21,7 @@ function verificarEmail($email, $conexao){
         return false;
     }
     
+//SENDO UTILIZADO NA PAGINA DE CADASTRO DE CLIENTE.
 }
 
 ?>

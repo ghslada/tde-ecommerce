@@ -1,7 +1,13 @@
 <?php
 session_start();
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
-    
+    $cpf= filter_input(INPUT_GET, 'cpf', FILTER_SANITIZE_NUMBER_INT);
+    $nome= filter_input(INPUT_GET, 'nome', FILTER_SANITIZE_NUMBER_INT);
+    $senha= filter_input(INPUT_GET, 'senha', FILTER_SANITIZE_NUMBER_INT);
+    $endereco= filter_input(INPUT_GET, 'endereco', FILTER_SANITIZE_NUMBER_INT);
+    $cidade_cep= filter_input(INPUT_GET, 'cidade_cep', FILTER_SANITIZE_NUMBER_INT);
+    $tipo_usuario_id= filter_input(INPUT_GET, 'tipo_usuario_id', FILTER_SANITIZE_NUMBER_INT);
+    $telefone= filter_input(INPUT_GET, 'telefone', FILTER_SANITIZE_NUMBER_INT);    
 }
 else {
     header("Location: ../login.php");
@@ -231,7 +237,7 @@ else {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Usuários</h1>
+                        <h1 class="mt-4">Alterar dados de um usuário</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -246,7 +252,7 @@ else {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de clientes</h3>
+                                <h3>Tabela de usuários</h3>
                                 
                             </div>
                             <div class="card-body">
@@ -277,57 +283,14 @@ else {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        include_once("../listas/gerarListaClientes.php");
-                                        gerarListaClientes();
+                                        include_once("../listas/gerarListaUsers.php");
+                                        gerarListaUsers();
                                         ?>
                                     </tbody>
                                 </table>
                                 
                             </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de Administradores</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple2">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        include_once("../listas/gerarListaAdmin.php");
-                                        gerarListaAdmin();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -351,4 +314,36 @@ else {
         <script src="../js/datatables-simple-demo.js"></script>
     </body>
 </html>
+<?php
+include_once("../conexao.php");
 
+// $cpf= filter_input(INPUT_GET, 'cpf', FILTER_SANITIZE_NUMBER_INT);
+// $nome= filter_input(INPUT_GET, 'nome', FILTER_SANITIZE_NUMBER_INT);
+// $senha= filter_input(INPUT_GET, 'senha', FILTER_SANITIZE_NUMBER_INT);
+// $endereco= filter_input(INPUT_GET, 'endereco', FILTER_SANITIZE_NUMBER_INT);
+// $cidade_cep= filter_input(INPUT_GET, 'cidade_cep', FILTER_SANITIZE_NUMBER_INT);
+// $tipo_usuario_id= filter_input(INPUT_GET, 'tipo_usuario_id', FILTER_SANITIZE_NUMBER_INT);
+// $telefone= filter_input(INPUT_GET, 'telefone', FILTER_SANITIZE_NUMBER_INT);
+
+function updateCliente(){
+    
+    $conexao = conectarBD();
+
+    $dados="update from usuario where cpf={$cpf} set cpf='hello world'" ;
+
+    $result=mysqli_query($conexao, $dados) or die (mysqli_error());
+
+    $res=mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    if(count($res)){
+
+        return ($res);
+
+    }else{
+        return '0 resultados';
+    }
+
+    desconectarBD($conexao);
+}
+
+?>

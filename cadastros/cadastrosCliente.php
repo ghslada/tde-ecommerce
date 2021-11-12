@@ -2,50 +2,30 @@
 
 include_once("./conexao.php");
 include_once("./verificacoes/verificarEmail.php");
+include_once("./avisos/avisoCadastro.php");
 
 
 function cadastrarCliente($cpf, $nome, $email,$senha,$endereco,$cidade_cep, /* tipo_usuario_id=1,*/ $telefone){
-    
+
+    //SERIA BOM IMPLEMENTAR CONTAGEM DE CARACTERES DA SENHA
     $conexao = conectarBD();
 
-    //verifica se o email ja esta no banco de dados
+    //VERIFICA SE O EMAIL JA ESTA NO BANCO DE DADOS
     $verifica=verificarEmail($email, $conexao);
 
     if($verifica==true){
 
-        echo('<div class="container border border-dark rounded col-md-5" style="width: 400px; height: 300px; transform: translate(200%, 80%); position: absolute; z-index: 10">
-        <div class="row">
-            <div class="btn-lg btn-warning rounded-0" style="height: 15%;">
-                <div class="btn bg-light mx-1" style="width: 80%; ">Aviso</div>
-                <a href="cadastro.php" class="btn btn-danger mx-1" style="float: right;">X</a>
-            </div>
-        </div>
-        <div class="row mt-auto" style="height: 80%">
-            <div class="btn bg-white rounded-0 p-3" style="height: 100%">
-                <h2 class="mt-5" style="font-size: 200%">Email já cadastrado.</h2>
-            </div>
-        </div>
-    </div>');
+        //GERA AVISO EMAIL JA CADASTRADO
+        gerarAvisoCadastro($verifica);
 
     }else{
-
         $dados="INSERT INTO usuario(cpf, nome, email, senha, endereco, cidade_cep, tipo_usuario_id, telefone) VALUES('{$cpf}', '{$nome}', '{$email}', '{$senha}', '{$endereco}', '{$cidade_cep}', 1, '{$telefone}');";
+        
+        //SE USAR OR DIE A PAGINA FICA EM BRANCO EXIBINDO SO A MSG DE ERRO VINDA DA QUERY SQL
+        mysqli_query($conexao, $dados) or $verifica=(mysqli_error($conexao));
 
-        mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
-
-        echo('<div class="container border border-dark rounded col-md-5" style="width: 400px; height: 300px; transform: translate(200%, 80%); position: fixed; z-index: 10">
-        <div class="row">
-            <div class="btn-lg btn-warning rounded-0" style="height: 15%;">
-                <div class="btn bg-light mx-1" style="width: 80%; ">Aviso</div>
-                <a href="login.php" class="btn btn-danger mx-1" style="float: right;">X</a>
-            </div>
-        </div>
-        <div class="row mt-auto" style="height: 80%">
-            <div class="btn bg-white rounded-0 p-3" style="height: 100%">
-                <h2 class="mt-5" style="font-size: 200%">Sucesso ao realizar cadastro.</h2>
-            </div>
-        </div>
-    </div>');
+        //GERA AVISO SUCESOS AO CADASTRAR
+        gerarAvisoCadastro($verifica);
 
     }
     desconectarBD($conexao);

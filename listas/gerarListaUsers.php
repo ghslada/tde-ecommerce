@@ -1,5 +1,6 @@
 <?php
 include_once("getListaUsers.php");
+// include_once("../listas/gerarListaUsers.php");
 
 
 function gerarListaUsers(){
@@ -13,16 +14,21 @@ function gerarListaUsers(){
             }else{
                 $res['tipo_usuario_id']="ERRO.";
             }
-            echo("<tr>
-                    <td>{$res['cpf']}</td>
-                    <td>{$res['nome']}</td>
-                    <td>{$res['email']}</td>
-                    <td>{$res['senha']}</td>
-                    <td>{$res['endereco']}</td>
-                    <td>{$res['cidade_cep']}</td>
-                    <td>{$res['tipo_usuario_id']}</td>
-                    <td>{$res['telefone']}</td>
-                </tr>");
+            echo("
+                <form method=post action='../updates/updateUsuario.php'>
+                    <tr>
+                        <td>{$res['cpf']}</td>
+                        <td>{$res['nome']}</td>
+                        <td>{$res['email']}</td>
+                        <td>{$res['senha']}</td>
+                        <td>{$res['endereco']}</td>
+                        <td>{$res['cidade_cep']}</td>
+                        <td>{$res['tipo_usuario_id']}</td>
+                        <td>{$res['telefone']}</td>
+                        <td><a href='../updates/updateUsuario.php?cpf={$res['cpf']}&nome={$res['nome']}&email={$res['nome']}&senha={$res['senha']}&endereco={$res['endereco']}&cidade_cep={$res['endereco']}&tipo_usuario_id={$res['endereco']}&telefone={$res['telefone']}' class='btn btn-warning' type=submit name='alterar'><i class='bi bi-pencil-square'></i></a></td>
+                        <td><div class='btn btn-danger'><i class='bi bi-person-x'></i></div></td>
+                    </tr>
+                </form>");
             
         }
     }

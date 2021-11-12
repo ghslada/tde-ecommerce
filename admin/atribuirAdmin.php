@@ -6,10 +6,6 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
 else {
     header("Location: ../login.php");
 }
-//SET SQL_SAFE_UPDATES = 0;
-//UPDATE usuario SET tipo_usuario_id=2 WHERE email='gabru@email.com';
-//select * from usuario;
-//SET SQL_SAFE_UPDATES = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,10 +83,52 @@ else {
                                 Produtos
                                 <div class="sb-sidenav-collapse-arrow"><i  class="fas fa-angle-down"></i></div>
                             </a>
-                                <div class="collapse" id="collapseProdutos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-static.html">Gerenciar tipos de produtos</a>
-                                        <a class="nav-link" href="layout-sidenav-light.html">Gerenciar produtos</a>
+                                
+                                <div class="collapse" id="collapseProdutos" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#produtosCollapseEdit" aria-expanded="false" aria-controls="produtosCollapseEdit">
+                                            Gerenciar
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                        <div class="collapse" id="produtosCollapseEdit" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                            <nav class="sb-sidenav-menu-nested nav">
+                                                <a class="nav-link" href="layout-static.html">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
+                                                    Tipo de produto
+                                                </a>
+                                                <a class="nav-link" href="layout-static.html">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
+                                                    Produtos
+                                                </a>
+                                                
+                                            </nav>
+                                        </div>
+
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#produtosCollapseEdit2" aria-expanded="false" aria-controls="produtosCollapseEdit2">
+                                            Cadastrar novo
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                        <div class="collapse" id="produtosCollapseEdit2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                            <nav class="sb-sidenav-menu-nested nav">
+
+                                                <a class="nav-link" href="layout-static.html">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-bookmark-plus"></i></div>
+                                                    Tipo de produto
+                                                </a>
+
+                                                <a class="nav-link" href="../cadastro.php">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus-circle-dotted"></i></div>
+                                                    Produto
+                                                </a>
+                                            </nav>
+                                        </div>
+
+                                        
+
+                                        
+
+
                                     </nav>
                                 </div>
 
@@ -137,14 +175,26 @@ else {
                                     </nav>
                                 </div>
 
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCidades" aria-expanded="false" aria-controls="collapseCidades">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLocalidades" aria-expanded="false" aria-controls="collapseLocalidades">
                                 <div class="sb-nav-link-icon fs-5"><i style="color: white" class="bi bi-geo-alt-fill"></i></div>
-                                Cidades
+                                Localidades
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                                <div class="collapse" id="collapseCidades" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <div class="collapse" id="collapseLocalidades" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-static.html">Cadastrar cidade</a>
+                                                <a class="nav-link" href="../cadastro.php">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus"></i></div>
+                                                    Cadastrar cidade
+                                                </a>
+                                    </nav>
+                                </div>
+                                
+                                <div class="collapse" id="collapseLocalidades" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../cadastro.php">
+                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus"></i></div>
+                                                    Cadastrar estado
+                                                </a>
                                     </nav>
                                 </div>
 
