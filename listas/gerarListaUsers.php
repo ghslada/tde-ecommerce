@@ -1,8 +1,12 @@
 <?php
 include_once("getListaUsers.php");
-// include_once("../listas/gerarListaUsers.php");
+include_once("../delete/deletarUsuario.php");
 
-
+$email= filter_input(INPUT_GET, 'email');
+if(isset($email)){
+    //NECESSARIO REALIZAR UPDATE E INFORMAR SE TEVE SUCESSO
+    deletarUsuario($email);
+}
 function gerarListaUsers(){
     $result=getListaUsers();
     if(isset($result)){
@@ -14,6 +18,7 @@ function gerarListaUsers(){
             }else{
                 $res['tipo_usuario_id']="ERRO.";
             }
+            //LISTA SENDO GERADA NA PAGINA ALTERAR CADASTRO
             echo("
                 <form method=post action='../updates/updateUsuario.php'>
                     <tr>
@@ -26,10 +31,11 @@ function gerarListaUsers(){
                         <td>{$res['tipo_usuario_id']}</td>
                         <td>{$res['telefone']}</td>
                         <td><a href='./formAlterarUsuario.php?cpf={$res['cpf']}&nome={$res['nome']}&email={$res['email']}&senha={$res['senha']}&endereco={$res['endereco']}&cep={$res['cidade_cep']}&tipo={$res['tipo_usuario_id']}&telefone={$res['telefone']}' class='btn btn-warning' type=submit name='alterar'><i class='bi bi-pencil-square'></i></a></td>
-                        <td><div class='btn btn-danger'><i class='bi bi-person-x'></i></div></td>
+                        <td>
+                            <a class='btn btn-danger' href='./alterarUsuario.php?&email={$res['email']}' ><i class='bi bi-person-x'></i></a>
+                        </td>
                     </tr>
-                </form>");
-            
+                </form>"); 
         }
     }
 }

@@ -16,36 +16,37 @@ function cadastrarCliente($cpf, $nome, $email,$senha,$endereco,$cidade_cep, /* t
     if($verifica==true){
 
         //GERA AVISO EMAIL JA CADASTRADO
-        gerarAvisoCadastro($verifica);
+        $mensagem="Email já cadastrado.";
+        gerarAvisoCadastro($verifica, $mensagem);
 
     }else{
         $dados="INSERT INTO usuario(cpf, nome, email, senha, endereco, cidade_cep, tipo_usuario_id, telefone) VALUES('{$cpf}', '{$nome}', '{$email}', '{$senha}', '{$endereco}', '{$cidade_cep}', 1, '{$telefone}');";
-        
         //SE USAR OR DIE A PAGINA FICA EM BRANCO EXIBINDO SO A MSG DE ERRO VINDA DA QUERY SQL
-        mysqli_query($conexao, $dados) or $verifica=(mysqli_error($conexao));
-
+        mysqli_query($conexao, $dados) or die(mysqli_error($conexao));
+        
         //GERA AVISO SUCESOS AO CADASTRAR
-        gerarAvisoCadastro($verifica);
-
+        $mensagem="Sucesso ao realizar cadastro.";
+        gerarAvisoCadastro($verifica, $mensagem);
+        
     }
     desconectarBD($conexao);
 }
 
-function exibirProdutos(){
+// function exibirProdutos(){
 
-}
+// }
 
-function exibirCarrinho(){
+// function exibirCarrinho(){
 
-}
+// }
 
-function alterarCarrinho(){
+// function alterarCarrinho(){
 
-}
+// }
 
-function excluirCarrinho(){
+// function excluirCarrinho(){
     
-}   
+// }   
 
 
 
