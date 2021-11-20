@@ -14,7 +14,7 @@ else {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Atribuir função de administrador</h1>
+                        <h1 class="mt-4">Usuários</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -67,7 +67,50 @@ else {
                                 </table>
                                 
                             </div>
-                        </div>                        
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1 fs-5"></i>
+                                <h3>Tabela de Administradores</h3>
+                                
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple2">
+                                    <thead>
+                                        <tr>
+                                            <th>CPF</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Senha</th>
+                                            <th>Endereço</th>
+                                            <th>CEP</th>
+                                            <th>Função</th>
+                                            <th>Telefone</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>CPF</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Senha</th>
+                                            <th>Endereço</th>
+                                            <th>CEP</th>
+                                            <th>Função</th>
+                                            <th>Telefone</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                        include_once("../listas/gerarListaAdmin.php");
+                                        gerarListaAdmin();
+                                        ?>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
