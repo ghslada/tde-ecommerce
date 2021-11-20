@@ -119,7 +119,7 @@ function gerarHeader(){
                                                     Tipo de produto
                                                 </a>
 
-                                                <a class="nav-link" href="./cadastrarProduto.php">
+                                                <a class="nav-link" href="./formCadastroProduto.php">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus-circle-dotted"></i></div>
                                                     Produto
                                                 </a>
