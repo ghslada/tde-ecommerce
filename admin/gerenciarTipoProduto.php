@@ -93,7 +93,7 @@ else {
                                         </a>
                                         <div class="collapse" id="produtosCollapseEdit" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                             <nav class="sb-sidenav-menu-nested nav">
-                                                <a class="nav-link" href="gerenciarTipoProduto.php">
+                                                <a class="nav-link" href="layout-static.html">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
                                                     Tipo de produto
                                                 </a>
@@ -117,7 +117,7 @@ else {
                                                     Tipo de produto
                                                 </a>
 
-                                                <a class="nav-link" href="./cadastrarProduto.php">
+                                                <a class="nav-link" href="../cadastro.php">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus-circle-dotted"></i></div>
                                                     Produto
                                                 </a>
@@ -246,81 +246,27 @@ else {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de clientes</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        include_once("../listas/gerarListaClientes.php");
-                                        gerarListaClientes();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de Administradores</h3>
+                                <h3>Tabela de Tipo de Produtos</h3>
                                 
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple2">
                                     <thead>
                                         <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
+                                            <th>ID</th>
+                                            <th>Descricao</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
+                                            <th>ID</th>
+                                            <th>Descricao</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        include_once("../listas/gerarListaAdmin.php");
-                                        gerarListaAdmin();
+                                        include_once("../listas/gerarListaTipoProduto.php");
+                                        gerarListaTipoProduto();
                                         ?>
                                     </tbody>
                                 </table>

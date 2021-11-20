@@ -93,7 +93,7 @@ else {
                                         </a>
                                         <div class="collapse" id="produtosCollapseEdit" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                             <nav class="sb-sidenav-menu-nested nav">
-                                                <a class="nav-link" href="gerenciarTipoProduto.php">
+                                                <a class="nav-link" href="layout-static.html">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
                                                     Tipo de produto
                                                 </a>
@@ -112,12 +112,12 @@ else {
                                         <div class="collapse" id="produtosCollapseEdit2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                             <nav class="sb-sidenav-menu-nested nav">
 
-                                                <a class="nav-link" href="./formCadastroTipoProduto.php">
+                                                <a class="nav-link" href="layout-static.html">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-bookmark-plus"></i></div>
                                                     Tipo de produto
                                                 </a>
 
-                                                <a class="nav-link" href="./cadastrarProduto.php">
+                                                <a class="nav-link" href="../cadastro.php">
                                                     <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus-circle-dotted"></i></div>
                                                     Produto
                                                 </a>
@@ -230,106 +230,25 @@ else {
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Usuários</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de clientes</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        include_once("../listas/gerarListaClientes.php");
-                                        gerarListaClientes();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de Administradores</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple2">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        include_once("../listas/gerarListaAdmin.php");
-                                        gerarListaAdmin();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                        
+                    <div class="container-fluid px-4">                     
+                            <h1 class="mt-4">Cadastro de Tipo de Produto</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Cadastros</li>
+                            </ol>
+                        <form action="../verificacoes/verificarTipoProduto.php" method="POST">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="descricao" id="inputDescricao" type="text" />
+                                <label for="inputEndereco">Descrição Tipo do Produto</label>
+                            </div>      
+                            <div class="mt-4 mb-0">
+                                <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Cadastrar</p></button>
+                            </div>      
+                        </form>
                     </div>
                 </main>
+
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">

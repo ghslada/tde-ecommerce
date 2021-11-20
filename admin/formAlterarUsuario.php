@@ -11,6 +11,8 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
     $telefone= filter_input(INPUT_GET, 'telefone');    
     if(isset($cpf)){
 
+    }else{
+        die('Erro ao exibir formulario, nao foi informado um CPF.');
     }
 }
 else {
@@ -254,6 +256,7 @@ else {
                             </div>
                         </div>
                         <div class="card mb-4">
+                            <!-- FORMULARIO SENDO ENVIADO PARA A PROPRIA PAGINA -->
                             <form method='post'>
                                 <?php
                                 
@@ -299,46 +302,6 @@ else {
                                 ');
                                 ?>
                             </form>
-                            <!-- <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de usuários</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        // include_once("../listas/gerarListaUsers.php");
-                                        // gerarListaUsers();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div> -->
                         </div>                        
                     </div>
                 </main>
