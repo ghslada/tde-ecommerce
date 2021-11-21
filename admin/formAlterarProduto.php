@@ -1,9 +1,19 @@
 <?php
-session_start();
-include_once('./header.php');
-include_once('../cadastros/cadastrosProduto.php');
+include_once("../updates/updateProduto.php");
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
-    gerarHeader();
+    $id= filter_input(INPUT_GET, 'id');
+    $descricao= filter_input(INPUT_GET, 'descricao');
+    $preco= filter_input(INPUT_GET, 'preco');
+    $qtd_estoque= filter_input(INPUT_GET, 'qtd_estoque');
+    $url_img= filter_input(INPUT_GET, 'url_img');
+    $tipo_produto_id= filter_input(INPUT_GET, 'tipo_produto_id'); 
+    if(isset($id)){
+        include_once('./header.php');
+        gerarHeader();
+
+    }else{
+        die('Erro ao exibir formulario, nao foi informado um CPF.');
+    }
 }
 else {
     header("Location: ../login.php");
@@ -15,7 +25,7 @@ else {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Produtos</h1>
+                        <h1 class="mt-4">Alterar dados de um usuário</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -28,60 +38,50 @@ else {
                             </div>
                         </div>
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Formulário para cadastro de novo produto.</h3>
-                                
-                            </div>
-                            <div class="card-body">
-
-                                <!-- IMPLEMENTAR INPUTS PARA CADASTRO DE PRODUTO.
-                                     COM UPLOAD DE IMG NO SISTEMA -->
-
-                                     <form method='post' enctype="multipart/form-data">
+                            <!-- FORMULARIO SENDO ENVIADO PARA A PROPRIA PAGINA -->
+                            <form method='post' enctype="multipart/form-data">
                                 <?php
                                 
                                 if(isset($_POST['submit'])){
-                                    cadastrarProduto($_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_FILES['imagem'], $_POST['tipo_produto_id']);
+                                    if(isset($_FILES['img_nova'])){
+                                        updateProduto($_POST['id'], $_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_POST['img_antiga'],$_POST['tipo_produto_id'], $_FILES['img_nova']);
+                                    }else{
+                                        updateProdutoSemNovaImagem($_POST['id'], $_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_POST['img_antiga'],$_POST['tipo_produto_id']);
+                                    }
                                 }
                                 echo('
-                                
+                               <div class="form-floating mb-3">
+                                    <input class="form-control" name="id" id="inputCPF" type="text" value="'.$id.'" readonly/>
+                                    <label for="inputCPF" >ID: </label>
+                                </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" name="descricao" id="inputNome" type="text" value="" />
+                                    <input class="form-control" name="descricao" id="inputNome" type="text" value="'.$descricao.'" />
                                     <label for="inputNome">Descrição: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" name="preco" id="inputEmail" type="text" value="" />
+                                    <input class="form-control" name="preco" id="inputEmail" type="text" value="'.$preco.'" />
                                     <label for="inputEmail">Preço: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" name="qtd_estoque" id="inputSenha" type="text" value="" />
+                                    <input class="form-control" name="qtd_estoque" id="inputSenha" type="text" value="'.$qtd_estoque.'" />
                                     <label for="inputSenha">Quantidade em estoque: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="file" accept="image/*" class="form-control" name="imagem" id="inputEndereco"/>
+                                    <td> <br> <br> <input style="display: none" alt="Imagem do produto" name="img_antiga" value="'.$url_img.'"></td>
+                                    <input  type="file" accept="image/*" class="form-control" name="img_nova"/>
                                     <label for="inputEndereco">Imagem: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <select class="form-control" name="tipo_produto_id" id="inputEndereco" type="text" value="">
-                                        <option value="1">Celular</option>
-                                        <option value="2">Computador</option>
-                                    </select>
-                                    <label for="inputEndereco">Tipo de produto </label>
+                                    <input class="form-control" name="tipo_produto_id" id="inputCep" type="text" value="'.$tipo_produto_id.'" />
+                                    <label for="inputCep">Tipo de produto: </label>
                                 </div>
-
-                                
-                                
                                 <div class="mt-4 mb-0">
-                                    <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Create Account</p></button>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-block d-grid"><p>Update produto.</p></button>
                                 </div>
                                 ');
                                 ?>
                             </form>
-
-                            </div>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

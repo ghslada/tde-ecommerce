@@ -1,11 +1,12 @@
 <?php
 include_once("../conexao.php");
+// getProdutos();
 
-function getListaClientes(){
-    
+function getProdutos(){
+        
     $conexao = conectarBD();
 
-    $dados="select * from usuario where tipo_usuario_id=1" ;
+    $dados="select * from produto order by id desc limit 1" ;
 
     $result=mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
 
@@ -13,13 +14,14 @@ function getListaClientes(){
 
     if(count($res)){
 
-        return ($res);
+        return ($res[0]['id']+1);
 
     }else{
         return '0 resultados';
     }
 
     desconectarBD($conexao);
+
 }
 
 ?>

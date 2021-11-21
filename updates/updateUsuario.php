@@ -19,6 +19,8 @@ else {
 }
 
 function updateUsuario($cpf, $nome, $email, $senha, $endereco, $cep, $tipo, $telefone){
+
+    //VERIFICAR URL DA IMAGEM ANTERIOR, PARA TIRAR DO BANCO DE DADOS.
     
     $conexao = conectarBD();
 

@@ -3,11 +3,19 @@
 include_once("../conexao.php");
 // include_once("./verificacoes/verificarEmail.php");
 include_once("../avisos/avisoCadastroProduto.php");
+include_once("../verificacoes/verificaIdUltimoProduto.php");
 
+// session_start();
+if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
+}
+else {
+    header("Location: ../login.php");
+}
+function cadastrarProduto($descricao, $preco, $qtd_estoque, $imagem, $tipo_produto_id){
 
-function cadastrarProduto($descricao, $preco, $qtd_estoque, $url_img, $tipo_produto_id){
+    //UPLOAD DA IMAGEM NO BANCO DE DADOS.
+    $url_img=uploadNoSistema($imagem);
 
-    //SERIA BOM IMPLEMENTAR CONTAGEM DE CARACTERES DA SENHA
     $conexao = conectarBD();
 
     $dados="INSERT INTO produto(descricao, preco, qtd_estoque, url_img, tipo_produto_id) VALUES('{$descricao}', {$preco}, {$qtd_estoque}, '{$url_img}', {$tipo_produto_id});";
@@ -20,6 +28,22 @@ function cadastrarProduto($descricao, $preco, $qtd_estoque, $url_img, $tipo_prod
     gerarAvisoCadastroProduto($mensagem);
         
     desconectarBD($conexao);
+}
+
+function uploadNoSistema($imagem){
+
+    if(isset($imagem)){
+    $ext = strtolower(substr($imagem['name'],-4)); //Pegando extensão do arquivo
+    $new_name = getProdutos(); //Definindo um novo nome para o arquivo
+    $dir = '../assets/img/'; //Diretório para uploads
+    $enviado=move_uploaded_file($imagem['tmp_name'], $dir.$new_name.$ext); //Fazer upload do arquivo
+    if($enviado){
+        return "{$dir}{$new_name}{$ext}";
+    }else{
+        return 'Erro no upload da imagem';
+    }
+ }
+
 }
 
 

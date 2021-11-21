@@ -33,77 +33,32 @@ else {
                                 
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                            <table id="datatablesSimple2">
                                     <thead>
                                         <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
+                                            <th>ID</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Quantidade em estoque: </th>
+                                            <th>Imagem</th>
+                                            <th>Tipo de produto</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
+                                            <th>ID</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Quantidade em estoque: </th>
+                                            <th>Imagem</th>
+                                            <th>Tipo de produto</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        include_once("../listas/gerarListaClientes.php");
-                                        gerarListaClientes();
-                                        ?>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1 fs-5"></i>
-                                <h3>Tabela de Administradores</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple2">
-                                    <thead>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>CPF</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>Senha</th>
-                                            <th>Endereço</th>
-                                            <th>CEP</th>
-                                            <th>Função</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        include_once("../listas/gerarListaAdmin.php");
-                                        gerarListaAdmin();
+                                        include_once("../listas/gerarListaProduto.php");
+                                        gerarListaProdutos();
                                         ?>
                                     </tbody>
                                 </table>
