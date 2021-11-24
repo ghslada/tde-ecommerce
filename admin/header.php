@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
     gerarHeader();
 }

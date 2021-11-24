@@ -2,6 +2,7 @@
 session_start();
 include_once('./header.php');
 include_once('../cadastros/cadastrosProduto.php');
+include_once('../listas/gerarOptionTiposProduto.php');
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
     gerarHeader();
 }
@@ -63,15 +64,16 @@ else {
                                     <label for="inputEndereco">Imagem: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <select class="form-control" name="tipo_produto_id" id="inputEndereco" type="text" value="">
-                                        <option value="1">Celular</option>
-                                        <option value="2">Computador</option>
+                                    <select class="form-control" name="tipo_produto_id" id="inputEndereco" type="text">
+                                        ');
+
+                                        //OPTIONS DEVEM SER INFORMADOS ANTES DE FECHAR O SELECT. 
+                                        gerarOptionTipoProduto();
+
+                                echo('
                                     </select>
                                     <label for="inputEndereco">Tipo de produto </label>
                                 </div>
-
-                                
-                                
                                 <div class="mt-4 mb-0">
                                     <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Create Account</p></button>
                                 </div>
