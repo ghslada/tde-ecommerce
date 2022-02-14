@@ -17,7 +17,7 @@ function getProdutos(){
         return ($res[0]['id']+1);
 
     }else{
-        return '0 resultados';
+        echo '0 resultados';
     }
 
     desconectarBD($conexao);

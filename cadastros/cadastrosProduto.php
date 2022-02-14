@@ -24,8 +24,8 @@ function cadastrarProduto($descricao, $preco, $qtd_estoque, $imagem, $tipo_produ
     mysqli_query($conexao, $dados) or die(mysqli_error($conexao));
         
     $mensagem="Sucesso ao cadastrar produto.";
-
     gerarAvisoCadastroProduto($mensagem);
+
         
     desconectarBD($conexao);
 }
@@ -35,12 +35,15 @@ function uploadNoSistema($imagem){
     if(isset($imagem)){
     $ext = strtolower(substr($imagem['name'],-4)); //Pegando extensão do arquivo
     $new_name = getProdutos(); //Definindo um novo nome para o arquivo
-    $dir = '../assets/img/'; //Diretório para uploads
+    if(strlen($new_name)==0){
+        $new_name=1;
+    }
+        $dir = '../assets/img/'; //Diretório para uploads
     $enviado=move_uploaded_file($imagem['tmp_name'], $dir.$new_name.$ext); //Fazer upload do arquivo
     if($enviado){
         return "{$dir}{$new_name}{$ext}";
     }else{
-        return 'Erro no upload da imagem';
+        echo 'Erro no upload da imagem';
     }
  }
 

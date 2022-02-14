@@ -16,7 +16,7 @@ function getListaTipoProduto(){
         return ($res);
 
     }else{
-        return '0 resultados';
+        echo '0 resultados';
     }
 
     desconectarBD($conexao);

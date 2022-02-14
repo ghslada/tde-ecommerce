@@ -3,6 +3,7 @@
 
 include_once("verificacoes/verificarCadastro.php");
 
+
 verificarCamposCadastro();
 ?>
 <!DOCTYPE html>
@@ -67,20 +68,28 @@ verificarCamposCadastro();
                                                 <label for="inputEndereco">Endereço</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="cep" id="inputCEP" type="text" placeholder="96105-103" />
-                                                <label for="inputCEP">CEP</label>
+                                                <!-- <input class="form-control" name="cep" id="inputCEP" type="text" placeholder="96105-103" /> -->
+                                                <h6> CEP: </h6>
+                                                <?php include_once("listas/gerarOptionCep.php");
+                                                        echo'<select class="form-control"  name="cep" id="inputCEP">';
+                                                        gerarOptionCep(); 
+                                                        echo("</select>");
+                                                        //NECESSARIO FECHAR O SELECT DEPOIS DE GERAR AS OPTIONS.
+                                                    ?>
+                                                    
+                                                
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="telefone" id="inputTelefone" type="phone" placeholder="54 99239-4812" />
                                                 <label for="inputTelefone">Telefone</label>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Create Account</p></button>
+                                                <button class="btn btn-primary btn-block" type="submit" name="submit" class="d-grid"><p >Create Account</p></button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.php">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="login.php">Já possui uma conta? Ir para o login</a></div>
                                     </div>
                                 </div>
                             </div>

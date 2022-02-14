@@ -39,7 +39,7 @@ else {
                                 <!-- IMPLEMENTAR INPUTS PARA CADASTRO DE PRODUTO.
                                      COM UPLOAD DE IMG NO SISTEMA -->
 
-                                     <form method='post' enctype="multipart/form-data">
+                            <form method='post' enctype="multipart/form-data">
                                 <?php
                                 
                                 if(isset($_POST['submit'])){
@@ -74,9 +74,9 @@ else {
                                     </select>
                                     <label for="inputEndereco">Tipo de produto </label>
                                 </div>
-                                <div class="mt-4 mb-0">
-                                    <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Create Account</p></button>
-                                </div>
+                                <div class=" mb-0">
+                                <button type="submit" class="btn btn-primary btn-block d-grid" name="submit"><p >Cadastrar produto.</p></button>
+                            </div>
                                 ');
                                 ?>
                             </form>

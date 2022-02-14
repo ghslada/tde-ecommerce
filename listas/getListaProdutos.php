@@ -6,7 +6,7 @@ function getProdutos(){
         
     $conexao = conectarBD();
 
-    $dados="select * from produto order by id desc limit 1" ;
+    $dados="select * from produto order by id" ;
 
     $result=mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
 
@@ -17,7 +17,7 @@ function getProdutos(){
         return ($res);
 
     }else{
-        return '0 resultados';
+        echo '0 resultados';
     }
 
     desconectarBD($conexao);

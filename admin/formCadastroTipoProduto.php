@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
     include_once('./header.php');
+    include_once("../verificacoes/verificarTipoProduto.php");
     gerarHeader();
 }
 else {
@@ -22,11 +23,11 @@ else {
                         <form action="../verificacoes/verificarTipoProduto.php" method="POST">
                             <div class="form-floating mb-3">
                                 <input class="form-control" name="descricao" id="inputDescricao" type="text" />
-                                <label for="inputEndereco">Descrição Tipo do Produto</label>
+                                <label for="inputEndereco">Descrição do tipo de Produto</label>
                             </div>      
-                            <div class="mt-4 mb-0">
-                                <button type="submit" name="submit" class="d-grid"><p class="btn btn-primary btn-block">Cadastrar</p></button>
-                            </div>      
+                            <div class=" mb-0">
+                                    <button type="submit" class="btn btn-primary btn-block d-grid" name="submit"><p >Cadastrar tipo de produto.</p></button>
+                                </div>     
                         </form>
                     </div>
                 </main>

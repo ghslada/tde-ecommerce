@@ -1,0 +1,16 @@
+{
+    "name": "ghslada/ecommerce",
+    "description": "Simple commerce for a brand",
+    "type": "project",
+    "require": {
+        "symfony/mailer": "6.1.x-dev"
+    },
+    "license": "GPL v3.0",
+    "authors": [
+        {
+            "name": "ghslada",
+            "email": "189435@upf.br"
+        }
+    ],
+    "minimum-stability": "dev"
+}

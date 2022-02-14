@@ -9,6 +9,7 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
     $tipo_produto_id= filter_input(INPUT_GET, 'tipo_produto_id'); 
     if(isset($id)){
         include_once('./header.php');
+        include_once('../listas/gerarOptionTiposProduto.php');
         gerarHeader();
 
     }else{
@@ -43,9 +44,10 @@ else {
                                 <?php
                                 
                                 if(isset($_POST['submit'])){
-                                    if(isset($_FILES['img_nova'])){
-                                        updateProduto($_POST['id'], $_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_POST['img_antiga'],$_POST['tipo_produto_id'], $_FILES['img_nova']);
-                                    }else{
+                                    if(isset($_FILES['img_nova']) && strlen($_FILES['img_nova']['name']>0)){
+                                            updateProduto($_POST['id'], $_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_POST['img_antiga'],$_POST['tipo_produto_id'], $_FILES['img_nova']);
+                                    }
+                                    else{
                                         updateProdutoSemNovaImagem($_POST['id'], $_POST['descricao'], $_POST['preco'], $_POST['qtd_estoque'], $_POST['img_antiga'],$_POST['tipo_produto_id']);
                                     }
                                 }
@@ -72,7 +74,12 @@ else {
                                     <label for="inputEndereco">Imagem: </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" name="tipo_produto_id" id="inputCep" type="text" value="'.$tipo_produto_id.'" />
+                                    <select class="form-control" name="tipo_produto_id" id="inputCep" type="text">
+                                    ');
+                                    //OPTIONS DEVEM SER INFORMADOS ANTES DE FECHAR O SELECT. 
+                                    gerarOptionTipoProduto();
+                                    echo('
+                                    </select>
                                     <label for="inputCep">Tipo de produto: </label>
                                 </div>
                                 <div class="mt-4 mb-0">

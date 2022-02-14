@@ -1,7 +1,7 @@
 <?php
 include_once("../conexao.php");
 // include_once("../avisos/avisoUpdateProduto.php");
-include_once("../verificacoes/verificaIdUltimoProduto.php");
+include_once("../verificacoes/verificarProduto.php");
 
 session_start();
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2) {
@@ -21,26 +21,32 @@ else {
 }
 
 function updateProduto($id, $descricao, $preco, $qtd_estoque, $url_img, $tipo_produto_id, $url_nova){
-    if(isset($url_nova)){
-        $excluida=unlink($url_img);
-        if($excluida==false){
-            echo 'Erro ao excluir imagem do sistema.';
+        if((isset($url_img) && strlen($url_img)>0)){
+            try{
+                // $url=substr($url_img, (strlen($id)-1));
+                // $url_img=$url[0].'.'.$url[1];
+                $excluida=unlink($url_img);
+            }catch(error){
+                echo 'Erro ao excluir imagem.';
+            }
         }else{
-            $url_img=uploadNoSistema($url_nova);
-            echo 'Sucesso ao excluir imagem do sistema.';
+            if(isset($url_nova)){
+                
+            }
+            // $url_img=uploadNoSistema($url_nova, $id);
+            // echo 'Sucesso ao substituir imagem antiga.';
         }
-    }else{
-        
-    }
-    $conexao = conectarBD();
-    $dados="update produto set descricao='{$descricao}', preco='{$preco}', qtd_estoque='{$qtd_estoque}', url_img='{$url_img}', tipo_produto_id={$tipo_produto_id}  where id='{$id}'" ;
-    $result=mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
+        $url_img=uploadNoSistema($url_nova, $id);
+        // echo 'Sucesso ao substituir imagem antiga.';
+        $conexao = conectarBD();
+        $dados="update produto set descricao='{$descricao}', preco='{$preco}', qtd_estoque='{$qtd_estoque}', url_img='{$url_img}', tipo_produto_id={$tipo_produto_id}  where id='{$id}'" ;
+        $result=mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
 
-    if($result){
-        echo('Sucesso!!!');
-    }
-    // avisoUpdateProduto($result);
-    desconectarBD($conexao);  
+        if($result){
+            echo('Sucesso ao atualizar dados do produto!!!');
+        }
+        // avisoUpdateProduto($result);
+        desconectarBD($conexao);  
 }
 
 function updateProdutoSemNovaImagem($id, $descricao, $preco, $qtd_estoque, $url_img, $tipo_produto_id){
@@ -49,27 +55,26 @@ function updateProdutoSemNovaImagem($id, $descricao, $preco, $qtd_estoque, $url_
     $result=mysqli_query($conexao, $dados) or die (mysqli_error($conexao));
 
     if($result){
-        echo('Sucesso!!!');
+        echo('Sucesso ao atualizar dados do produto!!');
     }
     // avisoUpdateProduto($result);
     desconectarBD($conexao);  
 }
 
 
-function uploadNoSistema($imagem){
+function uploadNoSistema($imagem, $id){
 
     if(isset($imagem)){
-    $ext = strtolower(substr($imagem['name'],-4)); //Pegando extensão do arquivo
-    $new_name = getProdutos(); //Definindo um novo nome para o arquivo
-    $new_name--;
-    $dir = '../assets/img/'; //Diretório para uploads
-    $enviado=move_uploaded_file($imagem['tmp_name'], $dir.$new_name.$ext); //Fazer upload do arquivo
+        $ext = strtolower(substr($imagem['name'],-4)); //Pegando extensão do arquivo
+        $new_name = verificarProduto($id); //Definindo um novo nome para o arquivo
+        // $new_name--;
+        $dir = '../assets/img/'; //Diretório para uploads
+        $enviado=move_uploaded_file($imagem['tmp_name'], $dir.$new_name.$ext); //Fazer upload do arquivo
     if($enviado){
         return "{$dir}{$new_name}{$ext}";
     }else{
-        return 'Erro no upload da imagem';
+        echo 'Erro no upload da imagem';
     }
  }
-
 }
 ?>

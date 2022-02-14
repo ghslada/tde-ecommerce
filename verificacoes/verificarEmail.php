@@ -22,6 +22,7 @@ function verificarEmail($email, $conexao){
     }
     
 //SENDO UTILIZADO NA PAGINA DE CADASTRO DE CLIENTE.
+//SENDO UTILIZADO NA PAGINA DE RESET DA SENHA.
 }
 
 ?>

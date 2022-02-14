@@ -18,7 +18,7 @@ function verificarLogin($email, $senha){
 
     $conexao = conectarBD();
 
-    $busca="SELECT nome, email, senha, tipo_usuario_id AS tipo FROM usuario WHERE email='{$email}' AND senha='{$senha}';" ;
+    $busca="SELECT nome, cpf, email, senha, tipo_usuario_id AS tipo FROM usuario WHERE email='{$email}' AND senha='{$senha}';" ;
 
     $resultado=mysqli_query($conexao, $busca) or die (mysqli_error($conexao));
 
@@ -28,12 +28,14 @@ function verificarLogin($email, $senha){
         $tipo=$res['tipo'];
         $nome=$res['nome'];
         $email=$res['email'];
+        $cpf=$res['cpf'];
     
         if( $res['email'] == $email && $res['senha'] == $senha ){
             session_start();
             
             $_SESSION["tipo"]=$tipo;
             $_SESSION["nome"]=$nome;
+            $_SESSION["cpf"]=$cpf;
             $_SESSION["login"]=1;
             //REDIRECIONA PARA A PAGINA CONFORME TIPO DE USUARIO
             //ARQUIVO verificarTipoDeUser.php

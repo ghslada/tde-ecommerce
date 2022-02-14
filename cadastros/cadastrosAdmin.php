@@ -2,18 +2,18 @@
 
 include_once("../conexao.php");
 
-function atribuirAdmin($cpf, $nome, $email,$senha,$endereco,$cidade_cep, /* tipo_usuario_id=2, */ $telefone){
+// function atribuirAdmin($cpf, $nome, $email,$senha,$endereco,$cidade_cep, /* tipo_usuario_id=2, */ $telefone){
 
-    $conexao = conectarBD();
+//     $conexao = conectarBD();
 
-    $dados="ALTER " ;
+//     $dados="ALTER " ;
 
-    mysqli_query($conexao, $dados) or die (mysqli_error());
+//     mysqli_query($conexao, $dados) or die (mysqli_error());
 
-    echo("Sucesso ao cadastrar administrador.");
+//     echo("Sucesso ao cadastrar administrador.");
 
-    desconectarBD($conexao);
-}
+//     desconectarBD($conexao);
+// }
 
 
 function cadastrarTipoProduto($descricao){

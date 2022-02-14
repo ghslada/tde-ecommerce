@@ -183,21 +183,40 @@ function gerarHeader(){
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                                 <div class="collapse" id="collapseLocalidades" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                                <a class="nav-link" href="../cadastro.php">
-                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus"></i></div>
-                                                    Cadastrar cidade
-                                                </a>
-                                    </nav>
-                                </div>
-                                
-                                <div class="collapse" id="collapseLocalidades" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../cadastro.php">
-                                                    <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus"></i></div>
-                                                    Cadastrar estado
-                                                </a>
-                                    </nav>
+                                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#localidadesCollapseEdit" aria-expanded="false" aria-controls="produtosCollapseEdit">
+                                            Gerenciar
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                            <div class="collapse" id="localidadesCollapseEdit" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                <nav class="sb-sidenav-menu-nested nav">
+                                                    <a class="nav-link" href="./gerenciarCidade.php">
+                                                        <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
+                                                        Cidades
+                                                    </a>
+                                                    <a class="nav-link" href="./gerenciarEstado.php">
+                                                        <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-list-ul"></i></div>
+                                                        Estados
+                                                    </a>                                               
+                                                </nav>
+                                            </div>
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#localidadesCollapseEdit2" aria-expanded="false" aria-controls="produtosCollapseEdit2">
+                                            Cadastrar novo
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                            <div class="collapse" id="localidadesCollapseEdit2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                <nav class="sb-sidenav-menu-nested nav">
+                                                    <a class="nav-link" href="./formCadastroCidade.php">
+                                                        <div class="sb-nav-link-icon fs-4"><i style="color: white"  class="nav-link bi bi-bookmark-plus"></i></div>
+                                                        Cidade
+                                                    </a>
+                                                    <a class="nav-link" href="./formCadastroEstado.php">
+                                                        <div class="sb-nav-link-icon fs-4"><i style="color: white" class="nav-link bi bi-plus-circle-dotted"></i></div>
+                                                        Estado
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                    </nav>                
                                 </div>
 
                             <!-- PAGINAS SEM INTERACAO -->
