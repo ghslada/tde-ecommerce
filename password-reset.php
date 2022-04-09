@@ -32,26 +32,29 @@ include_once("avisos/gerarAviso.php");
                                     <div class="card-body">
 
                                         <?php
-                                        include_once("vendor/autoload.php");
-                                        include_once('vendor/symfony/mailer/Mailer.php'); 
-                                        include_once('vendor/symfony/mailer/Transport.php');                       
+                                        
+                                        include_once("vendor/autoload.php");                     
                                         use Symfony\Component\Mailer\Transport;
                                         use Symfony\Component\Mailer\Mailer;
-
+                                        use Symfony\Component\Mime\Email;
+                                        
+                                            
+                                        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+                                        $dotenv->load();
 
                                         if($_POST && $_POST["email"]){
                                             $email = $_POST["email"];
                                             $conexao = conectarBD();
                                             $EmailExiste = verificarEmail($email, $conexao);
                                             if($EmailExiste && $EmailExiste===true){
-                                                gerarAviso("Código de redefinição de senha enviado para o e-mail informado.", "green");
-                                           
+                                                
+            
+                                                $transport = Transport::fromDsn($_SERVER['MAILER_DSN']);
 
-                                                $transport = Transport::fromDsn('smtp://localhost');
                                                 $mailer = new Mailer($transport);
 
                                                 $e_mail = (new Email())
-                                                    ->from('hello@example.com')
+                                                    ->from('oultimo@moicano.com')
                                                     ->to($email)
                                                     //->cc('cc@example.com')
                                                     //->bcc('bcc@example.com')
@@ -62,6 +65,7 @@ include_once("avisos/gerarAviso.php");
                                                     ->html('<p>See Twig integration for better HTML integration!</p>');
 
                                                 $mailer->send($e_mail);
+                                                gerarAviso("Código de redefinição de senha enviado para o e-mail informado.", "green");
                                             }else{
                                                 gerarAviso("E-mail não encontrado no banco de dados. Digite um e-mail cadastrado em nosso site", "red");
                                             }

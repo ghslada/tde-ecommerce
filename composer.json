@@ -3,7 +3,9 @@
     "description": "Simple commerce for a brand",
     "type": "project",
     "require": {
-        "symfony/mailer": "6.1.x-dev"
+        "symfony/mailer": "6.1.x-dev",
+        "phpunit/phpunit": "10.0.x-dev",
+        "vlucas/phpdotenv": "5.4.x-dev"
     },
     "license": "GPL v3.0",
     "authors": [
